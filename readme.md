@@ -1,5 +1,5 @@
 # `torch-submod`
-[![Documentation Status](https://readthedocs.org/projects/torch-submod/badge/?version=latest)](https://torch-submod.readthedocs.io/en/latest/)
+[![Documentation Status](https://readthedocs.org/projects/torch-submod/badge/?version=latest)](http://torch-submod.readthedocs.io/en/latest/?badge=latest)
 [![Build Status](https://travis-ci.org/josipd/torch-submod.svg?branch=master)](https://travis-ci.org/josipd/torch-submod)
 
 A PyTorch library for differentiable submodular minimization.

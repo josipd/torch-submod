@@ -14,12 +14,39 @@
 
 import sys
 import os
+from mock import Mock
 import sphinx_rtd_theme
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-#sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath('../..'))
+try:
+    import torch
+except ImportError:
+    # Mock torch.autograd.Function
+    sys.path.insert(0, os.path.abspath('.'))
+
+class MockIgnoringArgs(object):
+    def __init__(self, *args, **kwargs):
+        pass
+
+# The following packages have to be mocked as we use autodoc.
+MOCK_MODULES = ['prox_tv',
+                'prox_tv.tv1_2d',
+                'prox_tv.tv1_1d',
+                'prox_tv.tv1w_2d',
+                'prox_tv.tv1w_1d',
+                'numpy',
+                'sklearn',
+                'sklearn.isotonic',
+                'sklearn.isotonic.isotonic_regression',
+                'torch_submod.blocks',
+                'torch_submod.blocks.blockwise_means',
+                'torch_submod.blocks.blocks_2d']
+sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
+
+
 
 # -- General configuration ------------------------------------------------
 

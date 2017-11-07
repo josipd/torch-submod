@@ -69,7 +69,8 @@ class TotalVariation2dWeighted(Function):
         :class:`torch:torch.Tensor`
             The solution to the total variation problem, of shape ``(m, n)``.
         """
-        opt = tv1w_2d(x.numpy(), weights_col.numpy(), weights_row.numpy(), **self.tv_args)
+        opt = tv1w_2d(x.numpy(), weights_col.numpy(), weights_row.numpy(),
+                      **self.tv_args)
         if self.refine:
             opt = self._refine(opt, x, weights_row, weights_col)
         opt = torch.Tensor(opt).view_as(x)
@@ -281,7 +282,8 @@ class TotalVariation1d(TotalVariation2dWeighted):
             opt = tv1_1d(x.numpy().ravel(), weights.numpy()[0],
                          **self.tv_args)
         else:
-            opt = tv1w_1d(x.numpy().ravel(), weights.numpy().ravel())
+            opt = tv1w_1d(x.numpy().ravel(), weights.numpy().ravel(),
+                          **self.tv_args)
         opt = torch.Tensor(opt).view_as(x)
 
         self.save_for_backward(opt)

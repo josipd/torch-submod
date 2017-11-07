@@ -1,0 +1,12 @@
+.eggs
+tmp
+*.egg-info
+build
+*/__pycache__
+torch_submod/blocks*.so
+*.swp
+.cache
+*.pyc
+.hypothesis
+.idea
+.ipynb_checkpoints
